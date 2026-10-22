@@ -1,0 +1,26 @@
+fastapi==0.128.8
+uvicorn==0.39.0
+python-multipart==0.0.20
+python-dotenv==1.2.1
+mysql-connector-python==9.4.0
+PyMySQL==1.1.2
+requests==2.32.5
+beautifulsoup4==4.14.3
+msal==1.35.1
+passlib[bcrypt]==1.7.4
+python-jose==3.5.0
+
+# Ingestion pipeline (mailbox polling, OCR, LLM extraction)
+watchdog==6.0.0
+langchain==0.3.26
+langchain-core==0.3.83
+langchain-openai==0.3.35
+numpy==2.0.2
+opencv-python-headless==4.13.0.92
+openpyxl==3.1.5
+pandas==2.3.3
+pdfplumber==0.11.8
+pillow==11.3.0
+PyMuPDF==1.26.5
+pytesseract==0.3.13
+reportlab==4.4.10

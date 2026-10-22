@@ -1,0 +1,547 @@
+<title>Invoice Pipeline Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #f3f4f1;
+    --surface: #ffffff;
+    --surface-2: #eaece7;
+    --ink: #1c2430;
+    --muted: #5b6472;
+    --line: #d4d7d0;
+    --accent: #2f5d8a;
+    --accent-soft: #e4ecf3;
+    --accent-ink: #1d3b57;
+    --warm: #a85a24;
+    --warm-soft: #f4e6d8;
+    --good: #3f7d54;
+    --good-soft: #e2efe4;
+    --shadow: 0 1px 2px rgba(28,36,48,0.06), 0 8px 24px -12px rgba(28,36,48,0.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161c;
+      --surface: #1a1f27;
+      --surface-2: #212832;
+      --ink: #e6e9ee;
+      --muted: #97a1b0;
+      --line: #2c3440;
+      --accent: #7aa8d4;
+      --accent-soft: #1f3348;
+      --accent-ink: #cfe1f2;
+      --warm: #e39a5c;
+      --warm-soft: #3a2a1c;
+      --good: #7fc394;
+      --good-soft: #1d3324;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12161c;
+    --surface: #1a1f27;
+    --surface-2: #212832;
+    --ink: #e6e9ee;
+    --muted: #97a1b0;
+    --line: #2c3440;
+    --accent: #7aa8d4;
+    --accent-soft: #1f3348;
+    --accent-ink: #cfe1f2;
+    --warm: #e39a5c;
+    --warm-soft: #3a2a1c;
+    --good: #7fc394;
+    --good-soft: #1d3324;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  code, .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.88em;
+  }
+
+  .eyebrow {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0.4rem 0 0.6rem;
+    text-wrap: balance;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 0 0 2.2rem;
+  }
+
+  h2 {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 3rem 0 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  h2 .num {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.1rem;
+  }
+
+  p { margin: 0.8rem 0; max-width: 68ch; }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--shadow);
+    margin: 1.2rem 0;
+  }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .stage {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    margin: 1.1rem 0;
+    box-shadow: var(--shadow);
+  }
+  .stage-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .stage-index {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 5px;
+    padding: 0.15rem 0.55rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .stage-title {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  .stage .file {
+    display: inline-block;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 0.05rem 0.4rem;
+  }
+  .stage.warm { border-left: 3px solid var(--warm); }
+  .stage.warm .stage-index { color: var(--warm); background: var(--warm-soft); }
+  .stage.good { border-left: 3px solid var(--good); }
+  .stage.good .stage-index { color: var(--good); background: var(--good-soft); }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 620px) { .split { grid-template-columns: 1fr; } }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+  }
+  .tool-card h3 {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--accent-ink);
+  }
+  .tool-card p { font-size: 0.94rem; margin: 0.4rem 0; }
+
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+    margin: 1.2rem 0 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 1rem 0;
+  }
+  caption { text-align: left; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+  th, td {
+    text-align: left;
+    padding: 0.55rem 0.7rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .table-wrap { overflow-x: auto; }
+
+  .pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+  }
+  .pill.claude { background: var(--accent-soft); color: var(--accent-ink); }
+  .pill.rule { background: var(--good-soft); color: var(--good); }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 3rem 0 2rem;
+  }
+
+  footer {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  a { color: var(--accent); }
+</style>
+
+<div class="page">
+
+  <div class="eyebrow">ennvault-claude-new &middot; architecture walkthrough</div>
+  <h1>How an invoice actually moves through this code</h1>
+  <p class="lede">
+    No prior context assumed. This walks the same path one document takes,
+    start to finish, in the order the code actually runs it &mdash; then shows
+    how what humans correct later loops back and changes future behavior.
+  </p>
+
+  <div class="callout">
+    <p><strong>Starting point:</strong> <code class="file">supervisor_main.py</code>.
+    It's a small always-on program that watches a folder for new,
+    ready-to-process documents. The moment one shows up, it hands the
+    document's ID (called a <code>src_id</code>) to the Orchestrator Agent
+    and steps back &mdash; everything from here on is that agent deciding
+    what to do next, one step at a time.</p>
+  </div>
+
+  <h2>The big picture</h2>
+  <p>
+    Think of the system as one manager (the <strong>Orchestrator Agent</strong>,
+    built on Claude) with six specialist departments it can call on, plus a
+    rulebook it must follow. Each department is a small program called an
+    <strong>MCP server</strong> &mdash; MCP is just a standard way for the
+    manager to ask a department "do this for me" and get a plain answer back,
+    the same way a phone extension lets you dial a specific office without
+    knowing how that office is wired inside.
+  </p>
+
+  <div class="diagram-wrap">
+<pre class="mermaid">
+flowchart TB
+    W["supervisor_main.py<br/>watches for new documents"] --> O
+
+    subgraph brain["orchestrator/agent.py"]
+        O["Orchestrator Agent<br/>(Claude, decides what happens next)"]
+    end
+
+    O <--> IDB["Invoice&#8209;DB server<br/>read / write invoice records"]
+    O <--> DI["Document&#8209;Intelligence server<br/>read the PDF, score confidence"]
+    O <--> EBS["Oracle&#8209;EBS server<br/>submit to Oracle"]
+    O <--> JDE["JDE server<br/>submit to JDE"]
+    O <--> SC["Supplier&#8209;Communication server<br/>email the supplier"]
+    O <--> MP["Memory / Policy server<br/>past cases, learned actions"]
+
+    O <--> RULES["Rulebook<br/>routing &middot; bandit &middot; verifier &middot; governance"]
+
+    IDB --- DB[("shared MySQL database")]
+    EBS --- ERP1[("Oracle EBS")]
+    JDE --- ERP2[("JDE")]
+    MP --- VEC[("correction history<br/>+ vector memory")]
+
+    HUMAN["AP staff correct or confirm<br/>an exception in the UI"] -.->|"feeds back into"| MP
+    MP -.->|"smarter next time"| DI
+    MP -.->|"smarter next time"| RULES
+</pre>
+  </div>
+
+  <p>
+    Two things flow along every arrow above: the manager asks a department a
+    question (<em>"what's this invoice's amount?"</em>), and the department
+    answers with data, never with a decision of its own. Every actual
+    <em>decision</em> &mdash; is this confident enough, what should we do
+    about this error, are we allowed to act without a human &mdash; is made
+    by the rulebook, which is deliberately plain, testable code, not
+    something the model improvises differently each time.
+  </p>
+
+  <h2><span class="num">00</span>Waking up</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">start</span>
+      <span class="stage-title">A new document is ready</span>
+    </div>
+    <p>
+      <code class="file">supervisor_main.py</code> notices a new folder of
+      page images, looks up which document it corresponds to in the
+      database, and calls
+      <code>orchestrator.agent.process_document(src_id)</code>. That one
+      function call is the entire hand-off &mdash; everything below happens
+      inside it.
+    </p>
+  </div>
+
+  <h2><span class="num">01</span>The manager takes over</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">01</span>
+      <span class="stage-title">orchestrator/agent.py</span>
+      <span class="pill claude">Claude decides</span>
+    </div>
+    <p>
+      This opens a connection to all six departments at once
+      (<code class="file">orchestrator/mcp_client.py</code> starts each one
+      as its own small background process) and starts a conversation with
+      Claude. Claude is given a short brief &mdash; "get this document to a
+      final state: submitted, on hold, or flagged" &mdash; and the full list
+      of tools it's allowed to call. From here, <strong>Claude chooses the
+      order</strong>; nothing is hardcoded to always happen next.
+    </p>
+  </div>
+
+  <h2><span class="num">02</span>Reading the document</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">02</span>
+      <span class="stage-title">Document-Intelligence server &rarr; routing.py</span>
+    </div>
+    <p>
+      Claude calls the Document-Intelligence department to read the invoice's
+      fields off the page images. That department doesn't just guess once
+      &mdash; it reads the document a few times and checks how often it gets
+      the same answer, which becomes a <strong>confidence score</strong> per
+      field. <code class="file">orchestrator/routing.py</code> then turns
+      that score into one of three calls: confident enough to go
+      straight through, shaky enough to double-check, or too uncertain and
+      a human needs to look at it.
+    </p>
+  </div>
+
+  <h2><span class="num">03</span>Saving what was read</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">03</span>
+      <span class="stage-title">Invoice-DB server</span>
+    </div>
+    <p>
+      Whatever was extracted gets written into the same invoice tables the
+      existing system already uses, so the human-facing dashboards stay
+      accurate no matter which path the document takes next.
+    </p>
+  </div>
+
+  <h2><span class="num">04</span>A second opinion before anything is submitted</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">04</span>
+      <span class="stage-title">orchestrator/verifier_agent.py</span>
+      <span class="pill rule">plain rules first</span>
+    </div>
+    <p>
+      Before Claude is allowed to submit anything to an ERP, it must run the
+      invoice past the Verifier. This checks a short list of plain business
+      rules &mdash; is the PO real, does the amount roughly match, do we
+      know this supplier &mdash; and only <em>after</em> the rules have
+      decided pass / flag / block does it optionally ask Claude to write a
+      one-paragraph explanation for the audit trail. The verdict itself
+      never depends on the model being reachable.
+    </p>
+  </div>
+
+  <h2><span class="num">05</span>Sending it to the ERP</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">05</span>
+      <span class="stage-title">Oracle-EBS server / JDE server</span>
+    </div>
+    <p>
+      If the verifier passed it, Claude calls the matching ERP department to
+      actually submit the invoice &mdash; the same REST calls the existing
+      system already makes, just reachable as a named tool instead of
+      buried inside a page route.
+    </p>
+  </div>
+
+  <h2><span class="num">06</span>When something goes wrong instead</h2>
+  <div class="stage warm">
+    <div class="stage-head">
+      <span class="stage-index">06</span>
+      <span class="stage-title">errors.py &rarr; bandit.py &rarr; governance.py</span>
+    </div>
+    <p>
+      A rejected submission or a blocked verdict is turned into a plain
+      label first &mdash; "invalid PO," "duplicate invoice," and so on
+      (<code class="file">mcp_servers/common/errors.py</code>). For that
+      label, <code class="file">orchestrator/bandit.py</code> looks at which
+      corrective action has worked best <em>for this supplier, for this
+      kind of error</em> before, and suggests one. Then
+      <code class="file">orchestrator/governance.py</code> is the last gate:
+      it only lets Claude actually carry out that action on its own if the
+      confidence is high enough, the dollar amount is small enough, and this
+      supplier/error combination has already earned that trust. Otherwise
+      the recommendation goes to a human instead of being acted on.
+    </p>
+  </div>
+
+  <h2><span class="num">07</span>Talking to the supplier, when allowed</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">07</span>
+      <span class="stage-title">Supplier-Communication server</span>
+    </div>
+    <p>
+      If the chosen action is "email the supplier" and governance approved
+      it, this department sends that email and can later check whether the
+      supplier replied.
+    </p>
+  </div>
+
+  <h2><span class="num">08</span>What humans do gets remembered</h2>
+  <div class="stage good">
+    <div class="stage-head">
+      <span class="stage-index">08</span>
+      <span class="stage-title">Memory / Policy server &rarr; learning/</span>
+    </div>
+    <p>
+      Whenever a human confirms or corrects a decision, that gets logged as
+      a small lesson: what the document looked like, what the AI suggested,
+      what the human actually did. That lesson does two things going
+      forward &mdash; it's stored so a similar future case can be looked up
+      as an example, and it nudges the confidence numbers in
+      <code class="file">orchestrator/bandit.py</code> for that supplier and
+      error type, so the same mistake is less likely to be repeated and a
+      repeatedly-correct action is more likely to be trusted next time.
+    </p>
+  </div>
+
+  <h2><span class="num">09</span>Watching it get better (or not)</h2>
+  <div class="stage">
+    <div class="stage-head">
+      <span class="stage-index">09</span>
+      <span class="stage-title">evaluation/metrics.py</span>
+    </div>
+    <p>
+      On a schedule, this tallies up how often the AI has agreed with
+      humans lately, how often an autonomous action was later reversed, and
+      similar numbers, per supplier and error type. Those numbers are the
+      only thing that can move a supplier from "always ask a human" toward
+      "safe to act on its own" &mdash; nobody has to trust the system in
+      the abstract, there's a number behind every step up.
+    </p>
+  </div>
+
+  <hr />
+
+  <h2>The two kinds of tools Claude can call</h2>
+  <p>
+    It's worth being precise about one thing: not every "tool" in the
+    diagram above is a department. Some are plain policy rules dressed up
+    to look like a tool call, on purpose.
+  </p>
+  <div class="split">
+    <div class="tool-card">
+      <h3>MCP server tools</h3>
+      <p>Live in <code class="file">mcp_servers/</code>. Each is its own
+      small program, started separately, that reads or writes something
+      real &mdash; the database, an ERP, an email inbox.</p>
+    </div>
+    <div class="tool-card">
+      <h3>Native policy tools</h3>
+      <p>Live in <code class="file">orchestrator/native_tools.py</code>.
+      These wrap the plain-Python rulebook (routing, bandit, verifier,
+      governance) so Claude can call them the same way &mdash; but the
+      math inside never changes based on what Claude "feels" that turn.</p>
+    </div>
+  </div>
+
+  <h2>Quick reference</h2>
+  <div class="table-wrap">
+  <table>
+    <caption>Where to look for each piece</caption>
+    <thead>
+      <tr><th>File</th><th>What it's responsible for</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">supervisor_main.py</td><td>The front door &mdash; notices new documents, starts everything else</td></tr>
+      <tr><td class="mono">orchestrator/agent.py</td><td>The manager &mdash; the Claude loop that decides what happens next</td></tr>
+      <tr><td class="mono">orchestrator/mcp_client.py</td><td>Opens the phone lines to all six departments</td></tr>
+      <tr><td class="mono">orchestrator/native_tools.py</td><td>Wraps the rulebook so Claude can call it like any other tool</td></tr>
+      <tr><td class="mono">orchestrator/routing.py</td><td>Confident enough to go straight through, or not?</td></tr>
+      <tr><td class="mono">orchestrator/bandit.py</td><td>Which fix has worked best for this supplier before?</td></tr>
+      <tr><td class="mono">orchestrator/governance.py</td><td>Is it actually allowed to act on its own right now?</td></tr>
+      <tr><td class="mono">orchestrator/verifier_agent.py</td><td>Second opinion before anything reaches the ERP</td></tr>
+      <tr><td class="mono">mcp_servers/*</td><td>The six departments &mdash; each a standalone MCP server</td></tr>
+      <tr><td class="mono">learning/*</td><td>Where corrections turn into memory and updated odds</td></tr>
+      <tr><td class="mono">evaluation/metrics.py</td><td>The scoreboard that unlocks more autonomy over time</td></tr>
+      <tr><td class="mono">db/legacy_schema.py</td><td>The existing tables this all reads and writes</td></tr>
+      <tr><td class="mono">db/new_schema.py</td><td>The new tables this architecture adds</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <hr />
+  <footer>
+    <p>To see it run for real without touching a live database: <code class="file">python -m pytest</code>
+    runs 43 tests against a scratch database, and
+    <code class="file">python scripts/smoke_test_mcp.py</code> starts two of the
+    real MCP servers and talks to them exactly the way the Orchestrator does.</p>
+  </footer>
+
+</div>

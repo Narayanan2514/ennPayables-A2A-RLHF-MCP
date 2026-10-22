@@ -1,0 +1,44 @@
+{
+  "id": "email-intake-agent",
+  "name": "Email Intake Agent",
+  "description": "Acts on one specific mailbox message at a time, as directed by the supervisor: downloads attachments and marks it read for a message already classified as valid, or just marks it read if the supervisor classified it as invalid/out-of-scope.",
+  "version": "2.0.0",
+  "url": "http://localhost:8001",
+  "protocolVersion": "0.3.0-ennvault",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "process_email_message",
+      "name": "Process Email Message",
+      "description": "Downloads attachments for one specific message the supervisor has classified as valid (in this pipeline's scope), marks it read, and returns an intake record.",
+      "tags": ["email", "intake", "graph", "mailbox", "microsoft", "attachments"],
+      "examples": ["Process this email intake message"],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    },
+    {
+      "id": "mark_email_invalid",
+      "name": "Mark Email Invalid",
+      "description": "Marks one specific message read without processing it -- the supervisor has classified it as invalid/out-of-scope for this pipeline.",
+      "tags": ["email", "intake", "graph", "mailbox", "microsoft", "invalid"],
+      "examples": ["Mark this out-of-scope email as read"],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "metadata": {
+    "boundary": "Per-message mailbox action: attachment retrieval, read-state, on the supervisor's instruction",
+    "background": "No longer runs its own poller -- the supervisor (client/orchestrator/email_polling.py) owns mailbox listing and the valid/invalid classification, and calls one of this agent's two skills per message",
+    "recreatedFrom": "ennvault-claude-backend/email_module (poll.py, service.py) and mcp_servers/common/graph_client.py used only as a functional reference"
+  }
+}

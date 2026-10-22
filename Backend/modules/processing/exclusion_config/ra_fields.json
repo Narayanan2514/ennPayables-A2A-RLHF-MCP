@@ -1,0 +1,38 @@
+{
+    "Omron": {
+        "fields": [
+            "Remittance","Email","PDF","Paid","To","Invoice","Date","Number","Gross","Amount",
+            "Page","-","Payment","Date","Number","Amount","Customer#","Customer","#","Omron","Corporate"
+        ]
+    },
+    "NTN":{
+        "fields":[
+            "ACH","PAYMENT","DETAIL","NTN","Payee","#-Name:","Payer","Name:","Customer","Nbr#","#:",
+            "Payment","Date:","Invoice","Date","Remarks","Net","Amt","Amount","(in","USD)",
+            "For","All","Inquiries:","Email:","Phone:","ext."
+        ]
+    },
+    "G&W":{
+        "fields":[
+            "G&W","Electric","Company","-","ACH","Payment","Detail","Customer","Nbr:","Number","Nbr","Check","Date","Total","Supplier","Invoice","Gross","Amount",
+            "Discount"
+        ]
+    },
+
+    "Quad": {
+    "fields": [
+    "Remittance", "Advice", "Remittance Advice", ":", "Invoice", "Number", "Invoice Number", "Date", "Invoice Amount", "Amount", 
+    "Amount Paid", "Discount", "Net", "Check Amount", "Check", "Check Amount:", "Check Date", "Vendor:", "Vendor", ":", 
+    "Check Number:", "Number:", "Amount Paid", "Net Amount","Paid", "Date:", "Amount:","-", "$","Sizzle,","Sizzle","Inc"
+]
+  },
+
+
+      "AT&T": {
+    "fields": [
+    "AT", "&", "T", "Universal", "Card", "-", "ACH", "Payment", "Detail", "Vendor", 
+    "Check", "Number", "Date", "Total", "Supplier", "Invoice", "Gross", "Amount:", "Discount", "Payment"
+]
+  }
+
+}

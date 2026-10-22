@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 220 20% 90%;
+--sidebar-primary: 0 0% 100% / 0.29;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 16%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 221 83% 53%;
+
+    --chart-1: 221 83% 40%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 262 83% 58%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 220 20% 95%;
+    --card: 222 47% 9%;
+    --card-foreground: 220 20% 95%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 220 20% 95%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 220 20% 95%;
+    --muted: 222 30% 14%;
+    --muted-foreground: 220 9% 60%;
+    --accent: 222 30% 14%;
+    --accent-foreground: 220 20% 95%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 60% 35%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 80% 40%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 80% 50%;
+    --info-foreground: 0 0% 100%;
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 221 83% 53%;
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 220 20% 90%;
+--sidebar-primary: 0 0% 100% / 0.29;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 12%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 222 30% 14%;
+    --sidebar-ring: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer utilities {
+  .stat-card-blue {
+    @apply bg-primary/10 text-primary;
+  }
+  .stat-card-green {
+    @apply bg-success/10 text-success;
+  }
+  .stat-card-orange {
+    @apply bg-warning/10 text-warning;
+  }
+  .stat-card-red {
+    @apply bg-destructive/10 text-destructive;
+  }
+}

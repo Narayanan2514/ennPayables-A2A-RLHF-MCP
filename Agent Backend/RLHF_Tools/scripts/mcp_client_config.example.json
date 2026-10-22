@@ -1,0 +1,30 @@
+{
+  "_comment": "Example config for attaching any MCP-compatible client (Claude Desktop, Claude Code, etc.) directly to these servers for manual inspection/debugging over Streamable-HTTP -- copy relevant entries into that client's mcpServers config. Each server must already be running (`python -m mcp_servers.<name>_server`, one per port -- see .env.example) before a client connects. The Orchestrator/Planner Agent itself does not use this file; it connects to the same running servers programmatically via orchestrator/mcp_client.py.",
+  "_auth": "Every server enforces the same HTTP Basic Auth credentials (MCP_USERNAME/MCP_PASSWORD in .env, default admin/pass123). The Authorization header below is `Basic base64(username:password)` -- regenerate it if you change those values, e.g. `python -c \"import base64; print(base64.b64encode(b'admin:pass123').decode())\"`.",
+  "mcpServers": {
+    "invoice-db": {
+      "url": "http://127.0.0.1:8001/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    },
+    "document-intelligence": {
+      "url": "http://127.0.0.1:8002/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    },
+    "oracle-ebs": {
+      "url": "http://127.0.0.1:8003/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    },
+    "jde-erp": {
+      "url": "http://127.0.0.1:8004/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    },
+    "supplier-communication": {
+      "url": "http://127.0.0.1:8005/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    },
+    "memory-policy": {
+      "url": "http://127.0.0.1:8006/mcp",
+      "headers": { "Authorization": "Basic YWRtaW46cGFzczEyMw==" }
+    }
+  }
+}

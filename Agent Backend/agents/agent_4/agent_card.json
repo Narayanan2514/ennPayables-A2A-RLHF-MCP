@@ -1,0 +1,35 @@
+{
+  "id": "erp-push-agent",
+  "name": "ERP Push Agent",
+  "description": "Pushes a stored invoice to whichever live ERP this run targets: JDE (CheckPO -> AddSupplierInvoice -> approval-hold-and-email if required -> RunVMADriverUBE) or EBS (create_invoices REST call). Reads the invoice back from the ennvault database by src_id.",
+  "version": "1.0.0",
+  "url": "http://localhost:8004",
+  "protocolVersion": "0.3.0-ennvault",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "push_invoice_to_erp",
+      "name": "Push Invoice To ERP",
+      "description": "Pushes a stored invoice (read back by src_id) to the live ERP for this run's target_erp -- JDE's multi-step orchestrator flow (with voucher-approval email/hold) or EBS's create_invoices REST call.",
+      "tags": ["erp", "jde", "ebs", "push", "submit", "invoice", "oracle"],
+      "examples": ["Push this extracted invoice to the ERP"],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "metadata": {
+    "boundary": "Final-stage live ERP submission, for whichever ERP this run targets",
+    "autoSubmit": "Unlike this codebase's prior EBS-only document agent, this agent has no its-own auto-submit opt-in flag -- matching ennVault_org_backend's push_to_jde/push_to_ebs_inv, it always attempts the live push for whichever ERP it's asked to push to, whenever the orchestrator calls it",
+    "recreatedFrom": "ennVault_org_backend/ERP/JDE/inv_payload.py::push_to_jde and ERP/EBS/inv_payload.py::push_to_ebs_inv (exact multi-step flow and REST payload shapes) and ERP/db.py + modules/email_module/service.py (DB read-back/update and voucher-approval email)"
+  }
+}

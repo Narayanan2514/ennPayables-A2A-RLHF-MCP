@@ -1,0 +1,69 @@
+{
+  "ennvee": {
+    "fields": [
+    "Date", "Date:", "Date :", ":", "GSTIN:", "GSTIN", "Supplier:", "Supplier", "‘Subject", "Subject :", 
+    "Subject:", "Subject", "To", "To/Bill", "‘Sold", "Sold", "To:", "Number:", "Number","TO/","SHIP"
+]
+
+  },
+    "Life Fitness": {
+    "fields": ["(())}", "LIFEFITNESS", "LIFEFITNE", "S", "S", "EQUAL", "OPPORTUNITY", "AFFIRMATIVE", "FAMILY", "OF", 
+"BRANDS", "ACTION", "EMPLOYER", "MF", "VH", "PURCHASE", "ORDER", "NUMBER", "|REVISION|", "[REVISION", "PAGE", "This", "Purchase", 
+"Order", "Number", "must", "appear", "on", "all", "order", "acknowledgments,", 
+"packing", "lists,", "cartons", "and", "correspondence.", "VENDOR:", "SHIP", 
+"TO:", "BILL", "TO:", "CUSTOMER", "ACCT", "NO.", "VENDOR", "NO.", "DATE", "OF", 
+"ORDER/BUYER", "REVISED/BUYER", "PAYMENT", "TERMS", "SHIP", "VIA", "F.0.B", "F.O.B", "FREIGHT", 
+"TERMS", "REQUEST", "/DELIVERY", "CONFIRM", "TO/TELEPHONE/FAX", "SEE", "ATTACHED", 
+"CONDITIONS", "OF", "PURCHASE", "WHICH", "BY", "THIS", "REFERENCE", "ARE", "MADE", 
+"A", "PART", "OF", "THIS", "PURCHASE", "ORDER.", "ITEM", "|", "|,", "PART", "NUMBER/", "NUMBER’", "NUMBER", "NUMBER'",
+"DESCRIPTION", "DELIVERY", "DATE)", "QUANTITY", "UNIT", "|UNIT", "PRICE)", "Your", "#:", "ACCT#:", 
+"EXTENDED}", "T", "NUMBER", "EXTENDED", "EXTENDED)", "PRICE", "DATE", "Components", "produced", "with", 
+"Life", "Fitness", "owned", "tooling", "and/or", "drawings", "shall", "not", "be", "sold", 
+"or", "given", "as", "samples", "to", "any", "third", "party", "supplier", "without", "the", "written", "authorization", "from", 
+"a", "Life", "Fitness", "Purchasing", "representative.", "All", "parts", "and", "transactions", "must", "comply", "with", "Supplier", 
+"Specification", "0K31-00002-0001.", "All", "PPAP", "and/or", "first", "article", "requirements", "must", "be", "met", "and", "the", "appropriate", "documentation", "submitted", "to", "Life", "Fitness", "in", "Excel", "format,on", "a", 
+"CD", "with", "the", "sample", "part(s)to", "the", "attention", "of", "Life", "Fitness", "Incoming", "Quality", "Control", "Department.", "ALL", "FIRST", "ARTICLE/PPAP", 
+"SUBMISSIONS", "MUST", "INCLUDE", "CERTIFICATION", "OF", "ROHS", "COMPLIANCE", "AND", "A", "SEPARATE", "STATEMENT", "IDENTIFYING", "THE", "COUNTRY", "OF", "ORIGIN.", "LIFE", "FITNESS", 
+"PURCHASING", "IS", "TO", "BE", "CONTACTED", "IMMEDIATELY", "(BEFORE", "ACCEPTANCE", "OF", "P.O.)", "IF", "THE", "PART", "IS", "NOT", "ROHS", "COMPLIANT.", "BOTH", "STATEMENTS", "MUST", "BE", 
+"ON", "YOUR", "COMPANY", "LETTERHEAD", "AND", "MUST", "INCLUDE", "A", "HAND-WRITTEN", "SIGNATURE.", "All", "prices", "and", "amounts", "on", "this", "order", "are", "expressed", "in", ":", "US", "dollar",  
+"TOTAL", "AUTHORIZED", "ROTHORIZED", "SIGNATURE", "SEE", "ATTACHED", "CONDITIONS", "OF", "PURCHASE", "WHICH", "BY", "THIS", "REFERENCE", "ARE", "MADE", 
+"A", "PART", "OF", "THIS", "PURCHASE", "ORDER.", "SIGNATURE","REVISION","REQUEST/DELIVERY","1","2","SO#"]
+
+  },
+   
+  "ennVee Solutions": {
+    "fields":[
+   "ABC", "Corporation", "Purchase", "Order", "DATE", "Website:", "Phone:", "CUSTOMER", "ID", "Fax:", "VALID", "UNTIL",
+    "CUSTOMER", "DESCRIPTION", "Qty", "Price", "AMOUNT", "Subtotal", "TERMS", "AND", "CONDITIONS", "Taxable", "Customer",
+    "will", "be", "billed", "after", "indicating", "acceptance", "of", "this", "quote", "Tax", "rate","1.", "2.", "Payment",
+    "will", "be", "due", "prior", "to", "delivery", "of", "service", "and", "goods", "Tax", "due", "3.", "Please", "fax",
+    "or", "mail", "the", "signed", "price", "quote", "to", "the", "address", "above", "Other", "___________________________________________",
+    "₹", "TOTAL", "Print", "Name:","PO#","x" ,"ennVee","Solutions","FOB","BILL","TERM","CUSTOMER","ITEMS","items","TO/","SHIP"
+]
+   },
+
+
+   "ABB": {
+    "fields":[
+        "TAX","INVOICE","InvoiceNumber", "InvoiceDate","TermsofPayment", "CustomerNumber","InvoiceDueDate","BillTo/Payer","CustomerPO",
+        "CustomerContact","CustomerReference","SalesOrderNumber", "DeliveryNoteNumber",  "DespatchDate","SoldTo","Plant",
+        "ShippingPoint","TermsofDelivery","MannerofTransport","ShipTo","CONDITIONSOFSALE",
+        "Item","PartNumber","Quantity","Unit","UnitPrice","Discount","Delivery","ExtendedPrice","ManufacturerPartNumber",
+        "Number","PartNumberCustomer","Description","SerialNumber","AdditionalCost","RemitPaymentsto:",
+        "SubtotalInvoiceValue(ExclGSTA)UD","TotalGSTAmount(@10.00%)AUD","TotalInvoiceValue(InclGSTA)UD"
+]
+   },
+
+
+     "3G": {
+    "fields":[
+        "INVOICE","3G","Communications","Communications,","Inc.","Phone:","INVOICE","#","DATE","PO","Number","Currency",
+        "Code","TERMS","BILL","TO","SHIP","SL","No.","Item","Name","ITEM","DESCRIPTION","QTY","UNIT","PRICE",
+        "AMOUNT","TOTAL","Thank","you","for","your","business!"
+]
+   }
+
+   
+}
+
+

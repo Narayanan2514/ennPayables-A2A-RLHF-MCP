@@ -1,0 +1,34 @@
+{
+  "id": "validator-agent",
+  "name": "Validator Agent",
+  "description": "Runs deterministic rule checks on an email intake record (sender, subject, document type, PDF attachment readability), then the real ennVault_org_backend validation gate: customer exclusion_config lookup + OCR-based invoice-format recognition, PII-masking every recognized word before the page ever reaches a vision LLM. Produces a pass/flag/block verdict, plus the masked page images and code-mapping the Extraction Agent needs.",
+  "version": "1.0.0",
+  "url": "http://localhost:8002",
+  "protocolVersion": "0.3.0-ennvault",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "validate_intake_record",
+      "name": "Validate Intake Record",
+      "description": "Checks an email intake record's sender, subject, document type and PDF attachment readability, then runs org_backend's real gate (customer config lookup + OCR format recognition + word-level PII masking), returning a pass/flag/block verdict, an is_valid flag, and (if valid) the masked page images plus the code-mapping file for the Extraction Agent.",
+      "tags": ["validation", "rules", "verify", "intake", "invoice", "pdf"],
+      "examples": ["Validate this intake record for ERP processing: {...}"],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "metadata": {
+    "boundary": "Deterministic pre-extraction validation gate",
+    "recreatedFrom": "ennvault-claude-backend/orchestrator/verifier_agent.py (rule-engine pattern) used only as a functional reference -- rules here check pre-extraction intake fields, not post-extraction header/line amounts"
+  }
+}

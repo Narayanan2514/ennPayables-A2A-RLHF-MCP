@@ -1,0 +1,55 @@
+{
+    "BigSteel": {
+        "fields": [
+            "Vendor","Nbr","CUSTOMER","_INVOICE","SOLD","TO:","SHIP","Page","1","of","Invoice","Date",
+            "EA","Net","Invoice","Amount","No.","Terms","Special","Instructions","Canier","Carrier",
+            "Freight","Collect","Line","Customer","PO","No","NTN","Order","Number","Shipper/BOL",
+            "|","Quantity","uom","UOM","Price","Extended","Item","Shipped","Price","Description","EA",
+            "Net","Invoice","_INVOICE","The","Big","Steel","Co","/","Shipper","TO"
+        ]
+    },
+    "Adobe": {
+        "fields": [
+            "Invoice","Number","Date","Payment","Terms","Purchase","Customer","Vendor","Nbr","Invoice",
+            "PRODUCT","NUMBER","DESCRIPTION","QUANTITY","UNIT","PRICE","NET","AMOUNT","TAX","RATE",
+            "TAXES","TOTAL","Total","NET","AMOUNT(USD)","TAXES(SEE","DETAILS","FOR","RATES)","GRAND",
+            "TOTAL","Service","Term:","Invoice","Information","to","Description","Order","Vend",
+            "Invoive","Item","Details"
+        ]
+    },
+    "Axol": {
+        "fields": [
+            "Invoice","AlexandrKulichkov(AXSOL","LLC)","Date:","Invoice#:","PO#:","Vendor","Nbr","Routing","#","Account",
+            "ASSIGNMENT","PERIOD","PMT","TERMS","DUE","DATE","Item","Number","Qty","RATE","TOTAL"
+        ]
+    },
+
+       "3G": {
+    "fields":[
+        "INVOICE","3M","Health","Care,","Inc.","Phone:","INVOICE","#","DATE","PO","Number","Currency",
+        "Code","TERMS","BILL","TO","SHIP","SL","No.","Item","Name","ITEM","DESCRIPTION","QTY","UNIT","PRICE",
+        "AMOUNT","TOTAL","Thank","you","for","your","business!","PAYMENT","Care"
+]
+},
+
+    "Abbott": {
+    "fields": [
+                "Invoice","AlexandrKulichkov(AXSOL","LLC)","Date:","Invoice#:","PO#:","Vendor","Nbr","Routing","#","Account",
+                "ASSIGNMENT","PERIOD","PMT","TERMS","DUE","DATE","Item","Number","Qty","RATE","TOTAL","ITEM","DESCRIPTION",
+                "Abbott"," Laboratories,","Inc.","Grand","Laboratories,","Total(USD)"
+            ]
+
+
+    },
+
+    "Advantage Corp": {
+        "fields": [
+            "Vendor","Nbr","CUSTOMER","_INVOICE","SOLD","TO:","SHIP","Page","1","of","Invoice","Date",
+            "EA","Net","Invoice","Amount","No.","Terms","Special","Instructions","Canier","Carrier",
+            "Freight","Collect","Line","Customer","PO","No","NTN","Order","Number","Shipper/BOL",
+            "|","Quantity","uom","UOM","Price","Extended","Item","Shipped","Price","Description","EA",
+            "Net","Invoice","_INVOICE","The","/","Shipper","TO", "Amount($)",
+            "Advantage","Corp","Payment"
+        ]
+}
+}

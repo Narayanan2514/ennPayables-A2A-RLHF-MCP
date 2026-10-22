@@ -1,0 +1,10 @@
+{
+  "Quad": {
+    "fields": [
+    "HSBC", "ACH", "Credits", "Transaction", "type:", "Instruction", "reference", "number:", "Batch", "amount:", 
+    "Pay", "from:", "Date", "of", "report:", "Check Amount:", "Your", "batch", "reference:", "Entry", 
+    "Payment", "details", "Beneficiary", "account","Beneficiary", "&", "Payment","ID", "Amount","(USD)","type:","Routing:","name:","Paymnet","details:","Account","number:","Payment",
+    "ID:","Account","Type:","Reference"
+]
+  }
+}

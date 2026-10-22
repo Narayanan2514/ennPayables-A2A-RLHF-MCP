@@ -1,0 +1,34 @@
+{
+  "id": "extraction-agent",
+  "name": "Extraction Agent",
+  "description": "Runs vision-based extraction (JDE or EBS taxonomy, per this run's TARGET_ERP) over the Validator Agent's PII-masked invoice page images, decodes the masked field values back, and stores the invoice in the ennvault database (source, email, log_table, plus jde_inv_header/jde_inv_lines for JDE or inv_header/inv_line for EBS). Does not submit to a live ERP -- see the ERP Push Agent.",
+  "version": "1.0.0",
+  "url": "http://localhost:8003",
+  "protocolVersion": "0.3.0-ennvault",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "extract_and_store_invoice",
+      "name": "Extract And Store Invoice",
+      "description": "Extracts invoice header/line fields via vision LLM from PII-masked page images (JDE or EBS taxonomy per target_erp), decodes them, and stores the invoice in the ennvault DB under the matching taxonomy's tables.",
+      "tags": ["extraction", "vision", "invoice", "jde", "ebs", "database", "store"],
+      "examples": ["Extract and store the invoice for this validated intake record"],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "metadata": {
+    "boundary": "PII-masked-image field extraction + ennvault DB persistence, per TARGET_ERP taxonomy",
+    "recreatedFrom": "ennVault_org_backend/modules/processing/entity_extractor/llm_service/inv_extract.py (exact JDE/EBS prompts and taxonomy) and modules/processing/entity_extractor/db.py + ERP/db.py (table/column names)"
+  }
+}
